@@ -2,12 +2,19 @@
 
 import express from "express";
 import connectDB from "./config/db.js";
+
 import "dotenv/config"
+import User from "./routes/User.js";
 
 const app = express();
+app.use(express.json())
 
 
 connectDB();
+
+
+//routes
+app.use("/api/user",User);
 
 // This api used to verify the server is working or not
 app.get("/api/test-server",(req,res)=>{
