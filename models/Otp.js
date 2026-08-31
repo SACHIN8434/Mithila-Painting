@@ -11,10 +11,15 @@ const otpSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  purpose: {
+    type: String,
+    enum: ['signup', 'reset-password'],
+    default: 'signup',
+  },
   createdAt: {
     type: Date,
     default: Date.now,
-    expires: 300, // auto-deletes this doc 300 seconds (5 min) after creation
+    expires: 900, // auto-deletes after 5 min
   },
 });
 
